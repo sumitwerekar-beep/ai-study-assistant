@@ -13,7 +13,7 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 def get_response(messages):
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+          model="openai/gpt-oss-20b",
             messages=messages
         )
         return response.choices[0].message.content
@@ -23,7 +23,7 @@ def get_response(messages):
 def get_streaming_response(messages):
     try:
         with client.chat.completions.stream(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-20b",
             messages=messages
         ) as stream:
             for chunk in stream:
